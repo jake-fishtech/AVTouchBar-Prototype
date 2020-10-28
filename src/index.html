@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+<body onload="initialize()">
+    <canvas id="circlecnv"></canvas>
+    <div id="UI" onmouseover="mouseOverUI()" > <!--</div>onmouseout="myTime = setTimeout(mouseOutUI, 3000)">-->
+        <canvas id="topcnv"></canvas>
+        <div class="topBar">
+            <audio controls id="audio"></audio>
+            <input id="audioFile" type="file" accept="Audio/*" capture/> 
+            <!--
+            <img id="volIcon" src="VolumeSliderIcon.png" width="25" height="25">
+            <input id="volumeSlider" type="range" min="0" max="100" value="30" onchange="changeVolume()">
+            -->
+            <select id="colorSelect" onchange="changeColor()">
+                <option value="0">Color Spectrum</option>
+                <option value="1">Red</option>
+                <option value="2">Orange</option>
+                <option value="3">Yellow</option>
+                <option value="4">Green</option>
+                <option value="5">Blue</option>
+                <option value="6">Purple</option>
+            </select>
+        </div>
+    </div>
+    <p></p>
+    <canvas class="visualizer" id="cnv1" width="1024" height="350"></canvas>
+    <!-- <canvas class="visualizer" id="cnv1" width="659" height="30"></canvas> -->
+    <script src="script.js"></script>
+    <script src="fetchScript.js"></script>
+</body>
+</html>
