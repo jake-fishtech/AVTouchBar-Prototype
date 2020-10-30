@@ -20,6 +20,7 @@ app.on("ready", () => {
   });
   mainWindow.loadFile("./src/index.html");
   mainWindow.setPosition(0, 0);
+  mainWindow.setTouchBar(touchBar);
   // setTimeout(() => {
   spin.backgroundColor = "#000";
   //   // spin.icon = "./touchimage.png"
@@ -29,12 +30,14 @@ app.on("ready", () => {
   //   // newImage.image.resize({width: 659, height: 30})
   // }, 1000);
 });
+
 ipcMain.on("url:send", (e, data) => {
   var imageBuffer = new Buffer(data, "base64"); //console = <Buffer 75 ab 5a 8a ...
-  fs.writeFile("test2.jpg", imageBuffer, function (err) {
+  const path = require('path');
+  fs.writeFile((path.resolve(__dirname, 'test2.jpg')), imageBuffer, function (err) {
     if (err) console.log("err");
     let newImage = nativeImage
-      .createFromPath("./test2.jpg")
+      .createFromPath(path.resolve(__dirname, 'test2.jpg'))
       .resize({ width: 659, height: 30 });
     // console.log("this is new", newImage.getSize());
     spin.icon = newImage;
@@ -151,21 +154,28 @@ let touchBar = new TouchBar({
   ],
 });
 
-let window;
-const createNewTouchbar = (spin) => {
-  let newTouchBar = new TouchBar({
-    items: [spin],
-  });
-  return newTouchBar;
-};
-app.whenReady().then(() => {
-  window = new BrowserWindow({
+//let window;
+//const createNewTouchbar = (spin) => {
+  //let newTouchBar = new TouchBar({
+    //items: [spin],
+  //});
+  //return newTouchBar;
+//};
+//app.whenReady().then(() => {
+  //window = new BrowserWindow({
     // frame: false,
     // titleBarStyle: "hiddenInset",
-    width: 200,
-    height: 200,
-    backgroundColor: "#000",
-  });
-  window.loadURL("about:blank");
-  window.setTouchBar(touchBar);
-});
+     
+    //width: 200,
+    //height: 200,
+    //backgroundColor: "#000",
+    //alwaysOnTop: true,   
+  //});
+  //app.dock.hide();
+  //window.show()
+  //window.setAlwaysOnTop(true, "floating");
+  //window.setVisibleOnAllWorkspaces(true);
+  //window.setFullScreenable(false);    
+  //window.loadURL("about:blank");
+  //window.setTouchBar(touchBar);
+//});

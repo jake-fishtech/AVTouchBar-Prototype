@@ -1,16 +1,22 @@
 {
-  "name": "touchy",
+  "name": "avtouchbar",
+  "productName": "AVTouchBar",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Audio Visualiser for the Touch Bar",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
+    "electron-packager": "^15.1.0",
     "electron": "^9.0.2"
   }
 }
